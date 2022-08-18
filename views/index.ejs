@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Anime 2022</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+    <div class="container">
+        <h1><%= title %></h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nama Anime</th>
+                <th scope="col">Tokoh Utama</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% for (let nama_anime of nama_animes) { %>
+                    <tr>
+                    <td scope="row"><%= nama_anime.id %></td>
+                    <td scope="row"><%= nama_anime.nama %></td>
+                    <td scope="row"><%= nama_anime.tokoh %></td>
+                    <td scope="row">
+                      <!-- delete -->
+
+                    <!-- Modal Delete Produk-->
+                    <form action="/hapus" method="post">
+                   <input type="hidden" name="id" name="<%= nama_anime.id %>" value="<%= nama_anime.id %>" class="form-control">
+                    <input type="submit" class="btn btn-danger delete" 
+                    onclick="return alert('Are You sure?')" 
+                    value="DEL"/>
+                    <!-- end Modal Delete Produk-->
+                      </form>
+                    </td>
+                    </tr>
+                <% } %>
+            </tbody>
+          </table>
+          <form action="/tambah" method="post">
+            <h3>TAMBAH LIST ANIME</h3>
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Anime</label>
+              <input type="text" name="nama" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="tokoh" class="form-label">Tokoh Utama</label>
+              <input type="text" name="tokoh" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-danger" value="TAMBAH"/>
+          </form>
+    </div>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
